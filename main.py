@@ -2,9 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import turtle
 from math import sqrt
-
 from matplotlib.pylab import sort
-
 def is_triangle(a, b, c):
     return a + b > c and a + c > b and b + c > a
 def is_right_triangle(a, b, c):
