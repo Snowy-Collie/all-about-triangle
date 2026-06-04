@@ -1,8 +1,35 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# ==============================================================================
+# MIT License
+#
+# Copyright (c) 2026 Snowy Collie
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+# ==============================================================================
+
+import math
 import tkinter as tk
 from tkinter import messagebox
 import turtle
-from math import sqrt
-from matplotlib.pylab import sort
+
 def is_triangle(a, b, c):
     return a + b > c and a + c > b and b + c > a
 def is_right_triangle(a, b, c):
@@ -14,8 +41,8 @@ def draw_triangle(a, b, c):
     coord=[[0,0],[c,0],[x,y]]
     center_x=(max(coord[0][0],coord[1][0],coord[2][0])+min(coord[0][0],coord[1][0],coord[2][0]))/2
     center_y=(max(coord[0][1],coord[1][1],coord[2][1])+min(coord[0][1],coord[1][1],coord[2][1]))/2 + min(coord[0][1],coord[1][1],coord[2][1])/2
-    total_x=sort([coord[0][0],coord[1][0],coord[2][0]])[2]
-    total_y=sort([coord[0][1],coord[1][1],coord[2][1]])[2]
+    total_x = sorted([coord[0][0], coord[1][0], coord[2][0]])[2]
+    total_y = sorted([coord[0][1], coord[1][1], coord[2][1]])[2]
     scale=350/max(total_x,total_y) 
     scaled_coord=[[coord[0][0]*scale,coord[0][1]*scale],[coord[1][0]*scale,coord[1][1]*scale],[coord[2][0]*scale,coord[2][1]*scale]]
     scaled_coord_with_center=[[scaled_coord[0][0]-center_x*scale,scaled_coord[0][1]-center_y*scale],[scaled_coord[1][0]-center_x*scale,scaled_coord[1][1]-center_y*scale],[scaled_coord[2][0]-center_x*scale,scaled_coord[2][1]-center_y*scale]]
@@ -32,7 +59,7 @@ def draw_triangle(a, b, c):
 def calculate_perimeter(a, b, c):
     return a + b + c
 def calculate_area(a, b, c, p):
-    return sqrt(p * (p - a) * (p - b) * (p - c))
+    return math.sqrt(p * (p - a) * (p - b) * (p - c))
 def run_calculations(a, b, c):
     if not is_triangle(a, b, c):
         messagebox.showerror("Error", "Not a valid triangle.")
